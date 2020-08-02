@@ -1,0 +1,45 @@
+data:
+    dataset: imagenet
+    batch_size: 512 # total batch size
+    batch_accumulate: 4 # real batch size = batch_size * batch_accumulate
+    n_workers: 16 # for each process
+    root_path: /data/wubowen/imagenet
+
+
+model:
+    arch: MobileNetV1_ImageNet
+    checkpoint_path: None
+    num_classes: 1000
+
+#------training schedule----
+optimizer:
+    type: SGD # Adam
+    lr: 0.2
+    weight_decay: 1e-4
+
+
+lr_scheduler:
+    type: cos # cos|constant
+
+warmup:
+    epoch: 5
+    init_lr: 0.02
+    final_lr: 0.2
+
+
+epoch: 120
+gpu_ids: [0,1,2,3]
+
+
+#-------bag of tricks------
+label_smoothing: 0 # label_smoothing factor. If using label_smoothing, set this >0.
+apex: O0
+
+#---------log----------
+eval_interval: 1
+save_interval: 1
+exp_name: mbv1_imagenet_cos
+
+use_atp: True
+log_dir: logs/ # Do not modify often
+seed: None
