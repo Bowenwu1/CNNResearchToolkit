@@ -3,12 +3,11 @@ data:
     batch_size: 512 # total batch size
     batch_accumulate: 4 # real batch size = batch_size * batch_accumulate
     n_workers: 16 # for each process
-    root_path: /data/wubowen/imagenet
+    root_path: /data3/wubowen/imagenet
 
 
 model:
     arch: MobileNetV1_ImageNet
-    checkpoint_path: None
     num_classes: 1000
 
 #------training schedule----
@@ -34,6 +33,7 @@ gpu_ids: [0,1,2,3]
 #-------bag of tricks------
 label_smoothing: 0 # label_smoothing factor. If using label_smoothing, set this >0.
 apex: O0
+eps: 0.0
 
 #---------log----------
 eval_interval: 1
