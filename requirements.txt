@@ -1,5 +1,5 @@
 certifi==2019.11.28
-numpy==1.18.2
+numpy==1.22.0
 pandas==1.0.3
 Pillow==7.0.0
 protobuf==3.11.3
